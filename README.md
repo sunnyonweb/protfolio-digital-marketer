@@ -1,12 +1,7 @@
 
-# NeonMint Template Documentation
-
-![neonmint](https://github.com/user-attachments/assets/ae539704-2292-492f-882c-c90595b34717)
+# Template Documentation
 
 
-## 🎯 Overview
-
-**NeonMint** is a minimalist and modern template designed for developers and digital creatives. Its dark-toned aesthetic with mint green accents offers a clean, elegant, and functional visual experience, ideal for portfolios, dashboards, or tech landing pages.
 
 ## 📁 Project Structure
 
@@ -95,42 +90,7 @@
    - Responsive design
    - Dark mode support
 
-## 🚀 Getting Started
 
-1. **📦 Installation**
-
-   ### 🚀**Astro Installation**
-   ```bash
-   npm create astro@latest -- --template EFEELE/neonmint
-   ```
-   or
-   ### 🔧**Manual Installation**
-   
-   #### Clone Repository
-   ```bash
-   git clone https://github.com/EFEELE/NeonMint.git
-   ```
-   #### Install Dependencies
-   ```bash
-   npm install
-   ```
-
-  
-
-3. **⚡ Development**
-   ```bash
-   npm run dev
-   ```
-
-4. **🏗️ Build**
-   ```bash
-   npm run build
-   ```
-
-5. **👀 Preview**
-   ```bash
-   npm run preview
-   ```
 
 ## ⚙️ Configuration
 
