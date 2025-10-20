@@ -12,11 +12,13 @@
     "@astrojs/preact": "^4.0.8",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.3.0",
+    "@iconify-json/simple-icons": "^1.2.54",
     "@tailwindcss/vite": "^4.1.8",
     "@vercel/speed-insights": "^1.2.0",
     "alpinejs": "^3.14.9",
     "astro": "^5.13.1",
     "astro-icon": "^1.1.5",
+    "firebase": "^12.4.0",
     "preact": "^10.26.2",
     "prismjs": "^1.30.0",
     "tailwindcss": "^4.1.8"

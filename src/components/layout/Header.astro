@@ -6,17 +6,22 @@ import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 
 const [staticData] = await getCollection("staticData");
-const { github, githubIconName, linkedin, linkedinIconName } = staticData.data;
+const {
+  linkedin,
+  linkedinIconName,
+  facebook,
+  facebookIconName,
+  instagram,
+  instagramIconName,
+} = staticData.data;
 
 const currentPath = Astro.url.pathname;
 const routes = ["/", "/portfolio", "/about-me"];
-
-// Check if the current route is in the list of routes
 const isActiveRoute = routes.includes(currentPath);
 
 const navItems = isActiveRoute
   ? ["home", "experience", "projects", "about", "blog"]
-  : ["home", "blog", "about"]; // Change the items
+  : ["home", "blog", "about"];
 ---
 
 <header
@@ -27,40 +32,83 @@ const navItems = isActiveRoute
   <div
     class="relative mx-auto flex max-w-7xl flex-row items-center justify-between max-xl:px-6"
   >
+    <!-- Logo -->
     <a href="/" aria-label="Go to home">
-      <Icon
-        name="logo"
-        class="h-6 cursor-pointer transition-all hover:text-mint-300"
-        aria-hidden="true"
-      />
+      <span
+        class="h-6 cursor-pointer transition-all text-cyan-100 hover:text-mint-300 text-2xl font-bold"
+      >
+        4TECK
+      </span>
     </a>
 
+    <!-- Navigation -->
     <Navigation items={navItems} />
 
+    <!-- Social icons -->
     <div class="flex items-center justify-between gap-5 text-xl">
       <div
-        class="max-md:hidden flex items-center justify-center gap-5"
+        class="text-white max-md:hidden flex items-center justify-center gap-5"
         role="group"
       >
-        <Social link={github} iconName={githubIconName} />
-        <Social link={linkedin} iconName={linkedinIconName} />
+        <a
+          href="https://web.facebook.com/profile.php?id=100061186780200"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+        >
+          <Icon
+            name="simple-icons:facebook"
+            className="w-6 h-6 text-blue-600 hover:text-blue-800"
+          />
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/musfequr-rahman-fr1/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
+          <Icon
+            name="simple-icons:linkedin"
+            className="w-6 h-6 text-blue-600 hover:text-blue-800"
+          />
+        </a>
+
+        <a
+          href="https://www.instagram.com/musfequr_digitalmarketer/
+"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <Icon
+            name="simple-icons:instagram"
+            className="w-6 h-6 text-pink-500 hover:text-pink-700"
+          />
+        </a>
       </div>
-    </div>
-    <div class="flex items-center gap-5 text-xl md:pl-5">
-      <ThemeIcon />
-      <button
-        class="hamburger"
-        aria-label="Open menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <Icon name="bars" class="hamburger-icon bars-icon" aria-hidden="true" />
-        <Icon
-          name="xmark"
-          class="hamburger-icon xmark-icon"
-          aria-hidden="true"
-        />
-      </button>
+
+      <!-- Theme toggle & hamburger -->
+      <div class="flex items-center gap-5 text-xl md:pl-5">
+        <ThemeIcon />
+        <button
+          class="hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <Icon
+            name="bars"
+            class="hamburger-icon bars-icon"
+            aria-hidden="true"
+          />
+          <Icon
+            name="xmark"
+            class="hamburger-icon xmark-icon"
+            aria-hidden="true"
+          />
+        </button>
+      </div>
     </div>
   </div>
 </header>

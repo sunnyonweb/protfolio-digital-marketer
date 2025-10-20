@@ -1,40 +1,26 @@
 ---
-const allTools = [
-  "html",
-  "javascript",
-  "ts",
-  "angular",
-  "astro",
-  
-  "node",
-
-  "css",
-  "tailwind",
-  "sass",
-  "bootstrap",
-
-  "mongo",
-  "firebase",
-  "mysql",
-
-  "cloudflare",
-
-  "figma",
-  "vercel",
-  "netlify",
-  
-  "git",
-  "markdown",
-
-  "php",
-  "wordpress",
-];
-
+// Props
 import Capsule from "../ui/Capsule.astro";
 
 type ToolVariant = "default" | "center";
 
-// Base classes that are common to all variants
+// Filtered list: only the 12 icons you want to display here
+const filteredTools = [
+  "googleAdsense",
+  "Ahrefs",
+  "facebookAds",
+  "googleAds",
+  "googleAnalytics",
+  "googleDataStudio",
+  "googleSearchConsole",
+  "googleTagManager",
+  "idea",
+  "lineGraph",
+  "marketingStrategy",
+  "semrush",
+];
+
+// Base classes
 const baseClasses = "flex flex-wrap gap-4 max-lg:gap-1 grid-auto-efe";
 
 // Variant-specific classes
@@ -43,12 +29,17 @@ const variantClasses: Record<ToolVariant, string> = {
   center: "justify-center cursor-default",
 };
 
+// Props
 const { variant = "default", linkEnabled = false, size = "md" } = Astro.props;
 
-// Combine base classes with variant-specific classes
+// Combine classes
 const classes = `${baseClasses} ${variantClasses[variant as ToolVariant]}`;
 ---
 
 <div class={classes}>
-  {allTools.map((tool) => <Capsule lang={tool} linkEnabled={linkEnabled} size={size} />)}
+  {
+    filteredTools.map((tool) => (
+      <Capsule lang={tool} linkEnabled={linkEnabled} size={size} />
+    ))
+  }
 </div>

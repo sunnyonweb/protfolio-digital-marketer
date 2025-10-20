@@ -28,37 +28,41 @@ allPosts.sort(
     >
       I love <b
         class="bg-linear-to-r from-riptide-500 to-mint-500 dark:from-riptide-300 dark:to-mint-200 text-transparent bg-clip-text"
-        >turning ideas into real projects.</b
+        >turning strategies into real results.</b
       >
-      <br /> Here I show you some of the <b
+      <br /> Here you’ll find some of the  <b
         class="bg-linear-to-r from-riptide-500 to-mint-500 dark:from-riptide-300 dark:to-mint-200 text-transparent bg-clip-text"
-        >developments</b
-      > I've worked on, applying technology, design, and lots of creativity.
+        >digital marketing projects</b
+      > I’ve worked on — blending creativity, data, and smart execution to drive growth. 
       <b
         class="bg-linear-to-r from-riptide-500 to-mint-500 dark:from-riptide-300 dark:to-mint-200 text-transparent bg-clip-text"
-        >Check them out!</b
+        >Take a look!</b
       >
     </p>
     <slot />
   </div>
 
   <div
-    id="containerProjects"
-    class="mx-auto max-w-7xl grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 gap-5 p-2 py-4 max-h-[150vh] overflow-hidden transition-[max-height] duration-500 ease-in-out"
-  >
-    {
-      allPosts.map((post) => (
-        <Project
-          url={post.url}
-          title={post.frontmatter.title}
-          description={post.frontmatter.description}
-          date={post.frontmatter.pubDate}
-          languages={post.frontmatter.languages}
-          image={post.frontmatter.image}
-        />
-      ))
-    }
-  </div>
+  id="containerProjects"
+  class="mx-auto max-w-7xl grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 gap-5 p-2 py-4 max-h-[150vh] overflow-hidden transition-[max-height] duration-500 ease-in-out"
+  /* max-h-[150vh] and overflow-hidden: needed to initially show only first 6 projects */
+>
+  {
+    allPosts.map((post, index) => (
+      <Project
+        url={post.url}
+        title={post.frontmatter.title}
+        description={post.frontmatter.description}
+        date={post.frontmatter.pubDate}
+        languages={post.frontmatter.languages}
+        image={post.frontmatter.image}
+        class={index >= 6 ? "hidden-project" : ""} 
+        /* Added: hide projects after first 6 initially */
+      />
+    ))
+  }
+</div>
+
 
   <div
     id="moreProjects"
@@ -78,14 +82,23 @@ allPosts.sort(
     const moreProjectsBtn = document.querySelector("#moreProjects");
 
     if (container && moreProjectsBtn) {
-      // Expand container to show all projects
-      container.classList.remove("h-[150vh]");
-      container.classList.remove("h-auto");
-      // Hide the "View More" button after animation completes
-      moreProjectsBtn.classList.add("hidden");
-      setTimeout(() => {
-        moreProjectsBtn.classList.add("hidden");
-      }, 500);
+      // Show hidden projects (projects after first 6)
+      container.querySelectorAll(".hidden-project").forEach(el => {
+        el.classList.remove("hidden-project"); // Added: reveal hidden projects
+      });
+
+      // Remove max-height restriction to allow container to expand
+      container.classList.remove("max-h-[150vh]"); // Changed from previous h-[150vh] removal
+      container.classList.add("max-h-none"); // Added: ensure container expands fully
+
+      // Hide the "View More Projects..." button
+      moreProjectsBtn.classList.add("hidden"); // Added
     }
   });
 </script>
+
+<style>
+  .hidden-project {
+    display: none; /* Added: hide projects beyond first 6 initially */
+  }
+</style>

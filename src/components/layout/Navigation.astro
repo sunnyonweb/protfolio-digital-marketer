@@ -11,11 +11,6 @@ const { items = [] }: { items: (keyof typeof menu)[] } = Astro.props as {
 
 const menu = {
   about: { name: "About Me", path: "/about-me" },
-  blog: {
-    name: "Blog",
-    path: "/blog/",
-    dropdown: [{ name: "All Posts", path: "/blog/posts/" }],
-  },
   home: { name: "Home", path: "/#home" },
   experience: { name: "Experience", path: "/#experience" },
   projects: { name: "Projects", path: "/#projects" },
@@ -38,7 +33,6 @@ const baseClasses = {
   document.addEventListener("DOMContentLoaded", () => {
     const isHome = window.location.pathname === "/";
 
-    // Classes for link states
     const linkClasses = {
       active: [
         "text-mint-500",
@@ -73,37 +67,7 @@ const baseClasses = {
       });
     }
 
-    function setupScrollSpy() {
-      if (!isHome) return;
-
-      const sections = document.querySelectorAll("section[id]");
-      const navLinks = document.querySelectorAll("nav a");
-
-      const observerOptions = {
-        root: null,
-        rootMargin: "-50% 0px",
-        threshold: 0,
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const sectionId = entry.target.getAttribute("id");
-            if (sectionId) {
-              navLinks.forEach((link) => {
-                const path = link.getAttribute("data-path");
-                toggleLinkClasses(link, path === `/#${sectionId}`);
-              });
-            }
-          }
-        });
-      }, observerOptions);
-
-      sections.forEach((section) => observer.observe(section));
-    }
-
     updateActiveLink();
-    setupScrollSpy();
     window.addEventListener("hashchange", updateActiveLink);
   });
 </script>
@@ -113,36 +77,6 @@ const baseClasses = {
     items.map((key: string) => {
       const item = menu[key as keyof typeof menu];
       if (!item) return null;
-
-      if ("dropdown" in item) {
-        return (
-          <div class={baseClasses.dropdown}>
-            <a
-              href={item.path}
-              class={baseClasses.link}
-              data-path={item.path}
-              aria-label={item.name}
-              aria-current={
-                item.path === Astro.url.pathname ? "page" : undefined
-              }
-            >
-              {item.name}
-            </a>
-            <div class={baseClasses.dropdownMenu}>
-              {item.dropdown.map((dropdownItem) => (
-                <a
-                  href={dropdownItem.path}
-                  class={baseClasses.dropdownItem}
-                  data-path={dropdownItem.path}
-                  aria-label={dropdownItem.name}
-                >
-                  {dropdownItem.name}
-                </a>
-              ))}
-            </div>
-          </div>
-        );
-      }
 
       return (
         <a
