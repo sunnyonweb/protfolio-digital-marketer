@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "musfequr-rahman-07",
     "public": "dist",
     "ignore": [
       "firebase.json",

@@ -1,6 +1,6 @@
 ---
 layout: /src/layouts/ProjectLayout.astro
-title: "Indian Client – High-Impact Google Ads Campaign 🇮🇳"
+title: "Indian Client – High-Impact Google Ads Campaign"
 slug: "indian-client-google-ads-campaign"
 pubDate: 2025-10-18
 description: "A successful Google Ads campaign in India achieving exceptional reach, high-quality traffic, and outstanding ROI through smart targeting and cost optimization."

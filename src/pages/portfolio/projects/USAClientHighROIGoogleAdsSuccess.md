@@ -1,6 +1,6 @@
 ---
 layout: /src/layouts/ProjectLayout.astro
-title: "USA Client – High-ROI Google Ads Success 🇺🇸"
+title: "USA Client – High-ROI Google Ads Success"
 slug: "usa-client-google-ads-success"
 pubDate: 2025-10-18
 description: "A results-driven Google Ads campaign in the USA achieving high ROI, exceptional CTR, and cost-efficient conversions through smart targeting and optimization."
